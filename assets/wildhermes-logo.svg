@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" role="img" aria-labelledby="title desc">
+  <title id="title">WildHermes logo</title>
+  <desc id="desc">Gold line art style meditating figure and WildHermes text.</desc>
+  <rect width="500" height="500" fill="#000"/>
+  <g fill="none" stroke="#d6b07c" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <ellipse cx="250" cy="120" rx="52" ry="22"/>
+    <path d="M198 120c-18-5-34-17-42-32m146 32c18-5 34-17 42-32"/>
+    <path d="M250 142c-24 0-42 18-42 43v56m84 0v-56c0-25-18-43-42-43"/>
+    <path d="M168 297c29-18 56-26 82-26s53 8 82 26"/>
+    <path d="M150 315c26 14 61 22 100 22s74-8 100-22"/>
+    <path d="M178 210c-13 17-23 36-27 58m171-58c13 17 23 36 27 58"/>
+  </g>
+  <text x="250" y="430" text-anchor="middle" fill="#d6b07c" font-size="58" font-family="Segoe UI, Arial, sans-serif">WildHermes</text>
+</svg>
