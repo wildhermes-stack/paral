@@ -1,108 +1,70 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fi">
-<head>
-  <meta charset="UTF-8" />
-  <title>Wild Hermes – Tunturilta toiselle</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WildHermes Footer</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="placeholder-content">
+      <h1>WildHermes</h1>
+      <p>Demo-sivu, jossa näkyy pyydetty footer-rakenne.</p>
+    </main>
 
-    html, body {
-      height: 100%;
-      background: #000;
-      color: #fff;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      overflow-x: hidden;
-    }
+    <footer class="site-footer" aria-label="Sivuston alatunniste">
+      <div class="aurora-overlay" aria-hidden="true"></div>
 
-    .scroll-wrapper {
-      height: 800vh;
-      position: relative;
-    }
+      <div class="footer-top-links" aria-label="Pikalinkit">
+        <a href="#">Tilaa uutiskirje</a>
+        <a href="#">Varaa matka</a>
+        <a href="#">Ota yhteyttä</a>
+      </div>
 
-    .scene {
-      position: fixed;
-      inset: 0;
-      overflow: hidden;
-      background: #000;
-    }
+      <div class="footer-content">
+        <section class="footer-col footer-left" aria-label="Lakitekstit ja linkit">
+          <h2>Vasemmalla</h2>
+          <ul>
+            <li><a href="#">Etsi!</a></li>
+            <li><a href="#">Tietosuojaseloste</a></li>
+            <li><a href="#">Käyttöehdot</a></li>
+            <li><a href="#">Evästekäytäntö</a></li>
+            <li><a href="#">Saavutettavuusseloste</a></li>
+            <li><a href="#">Vastuuvapauslauseke</a></li>
+          </ul>
+        </section>
 
-    .mountain-frame {
-      position: absolute;
-      inset: 0;
-      background-size: cover;
-      background-position: center;
-      opacity: 0;
-      transform: scale(1.1) translateY(20px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    }
+        <section class="footer-col footer-center" aria-label="Brändi ja some">
+          <img
+            class="brand-logo"
+            src="assets/wildhermes-logo.svg"
+            alt="WildHermes meditoiva logo"
+          />
+          <h2 class="burning-title">WildHermes</h2>
 
-    .overlay-text {
-      position: absolute;
-      left: 50%;
-      bottom: 5%;
-      transform: translateX(-50%);
-      text-align: center;
-      font-size: 1rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.8);
-      text-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
-    }
-  </style>
-</head>
-<body>
+          <div class="socials" aria-label="Sosiaaliset mediat">
+            <a href="#" aria-label="Instagram" title="Instagram">IG</a>
+            <a href="#" aria-label="Facebook" title="Facebook">FB</a>
+            <a href="#" aria-label="TikTok" title="TikTok">TT</a>
+            <a href="#" aria-label="YouTube" title="YouTube">YT</a>
+          </div>
+        </section>
 
-  <div class="scroll-wrapper"></div>
+        <section class="footer-col footer-right" aria-label="Yhteystiedot">
+          <h2>Yhteystiedot</h2>
+          <ul>
+            <li><strong>Yritys:</strong> WildHermes</li>
+            <li><strong>Y-tunnus:</strong> 1234567-8</li>
+            <li><strong>Osoite:</strong> Esimerkkikatu 1, 00100 Helsinki</li>
+            <li><strong>Sähköposti:</strong> info@wildhermes.fi</li>
+            <li><strong>Puhelin:</strong> +358 40 123 4567</li>
+          </ul>
+        </section>
+      </div>
 
-  <div class="scene">
-    <div class="mountain-frame" style="background-image: url('tunturi1.jpg');"></div>
-    <div class="mountain-frame" style="background-image: url('tunturi2.jpg');"></div>
-    <div class="mountain-frame" style="background-image: url('tunturi3.jpg');"></div>
-    <div class="mountain-frame" style="background-image: url('tunturi4.jpg');"></div>
-    <div class="mountain-frame" style="background-image: url('tunturi5.jpg');"></div>
-
-    <div class="overlay-text">
-      Wild Hermes · Lentoa tunturilta toiselle
-    </div>
-  </div>
-
-  <script>
-    const frames = document.querySelectorAll('.mountain-frame');
-    const totalFrames = frames.length;
-    const scrollWrapper = document.querySelector('.scroll-wrapper');
-
-    function updateScene() {
-      const scrollTop = window.scrollY;
-      const maxScroll = scrollWrapper.offsetHeight - window.innerHeight;
-      const progress = Math.min(Math.max(scrollTop / maxScroll, 0), 1);
-
-      const position = progress * (totalFrames - 1);
-      const currentIndex = Math.floor(position);
-      const nextIndex = Math.min(currentIndex + 1, totalFrames - 1);
-      const blend = position - currentIndex;
-
-      frames.forEach(frame => {
-        frame.style.opacity = 0;
-        frame.style.transform = 'scale(1.1) translateY(20px)';
-      });
-
-      const currentFrame = frames[currentIndex];
-      currentFrame.style.opacity = 1 - blend;
-      currentFrame.style.transform = `scale(${1.05 - blend * 0.05}) translateY(${10 * blend}px)`;
-
-      const nextFrame = frames[nextIndex];
-      nextFrame.style.opacity = blend;
-      nextFrame.style.transform = `scale(${1.1 - blend * 0.1}) translateY(${20 - 20 * blend}px)`;
-    }
-
-    window.addEventListener('scroll', updateScene);
-    window.addEventListener('load', updateScene);
-    window.addEventListener('resize', updateScene);
-  </script>
-
-</body>
+      <div class="footer-bottom">
+        <p>© 2026 WildHermes. Kaikki oikeudet pidätetään.</p>
+      </div>
+    </footer>
+  </body>
 </html>
