@@ -1,0 +1,203 @@
+:root {
+  --bg-dark: #040404;
+  --gold: #d6b07c;
+  --gold-bright: #f3d9a5;
+  --gold-muted: #b58f62;
+  --text: #f5f0e8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background: #101010;
+  color: var(--text);
+}
+
+.placeholder-content {
+  min-height: 45vh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.site-footer {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.76), rgba(0, 0, 0, 0.93)),
+    url("assets/aurora-panorama.svg") center / cover no-repeat,
+    var(--bg-dark);
+  color: var(--gold);
+  padding: 1.25rem clamp(1rem, 2vw, 2.5rem) 1.4rem;
+  border-top: 1px solid rgba(214, 176, 124, 0.35);
+}
+
+.aurora-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(161, 130, 81, 0.22), transparent 43%),
+    radial-gradient(circle at 83% 68%, rgba(196, 151, 89, 0.2), transparent 40%),
+    linear-gradient(130deg, rgba(255, 210, 150, 0.06), rgba(0, 0, 0, 0.2));
+  mix-blend-mode: screen;
+  animation: auroraFloat 8s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+.footer-top-links,
+.footer-content,
+.footer-bottom {
+  position: relative;
+  z-index: 1;
+}
+
+.footer-top-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.65rem 1.6rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.83rem;
+}
+
+.site-footer a {
+  color: var(--gold);
+  text-decoration: none;
+  transition: color 200ms ease, transform 200ms ease, text-shadow 200ms ease;
+}
+
+.site-footer a:hover,
+.site-footer a:focus-visible {
+  color: var(--gold-bright);
+  transform: scale(1.08);
+  text-shadow: 0 0 10px rgba(248, 221, 167, 0.6);
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 1fr minmax(250px, 320px) 1fr;
+  gap: clamp(0.8rem, 2vw, 2rem);
+  align-items: start;
+}
+
+.footer-col h2 {
+  margin: 0 0 0.65rem;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.07em;
+  color: var(--gold-bright);
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.42rem;
+  font-size: 0.9rem;
+}
+
+.footer-center {
+  text-align: center;
+}
+
+.brand-logo {
+  display: block;
+  width: min(72%, 200px);
+  margin: 0 auto 0.4rem;
+  border: 1px solid rgba(214, 176, 124, 0.45);
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+}
+
+.burning-title {
+  margin: 0.4rem 0 0.8rem;
+  font-size: clamp(1.5rem, 2.2vw, 2rem);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--gold-bright);
+  text-shadow:
+    0 0 7px rgba(245, 200, 130, 0.75),
+    0 0 15px rgba(214, 140, 67, 0.55),
+    0 0 28px rgba(255, 140, 0, 0.25);
+  animation: burningText 2.4s ease-in-out infinite alternate;
+}
+
+.socials {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.socials a {
+  width: 2.15rem;
+  height: 2.15rem;
+  display: inline-grid;
+  place-items: center;
+  border: 1px solid rgba(214, 176, 124, 0.7);
+  border-radius: 50%;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+
+.footer-right li {
+  line-height: 1.35;
+}
+
+.footer-bottom {
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(214, 176, 124, 0.2);
+  text-align: center;
+  font-size: 0.84rem;
+  color: #dbc29c;
+}
+
+@keyframes burningText {
+  0% {
+    filter: brightness(0.9);
+    text-shadow:
+      0 0 6px rgba(245, 200, 130, 0.65),
+      0 0 12px rgba(214, 140, 67, 0.45),
+      0 0 24px rgba(255, 140, 0, 0.2);
+  }
+  100% {
+    filter: brightness(1.1);
+    text-shadow:
+      0 0 8px rgba(252, 220, 166, 0.8),
+      0 0 20px rgba(245, 149, 52, 0.7),
+      0 0 34px rgba(255, 133, 13, 0.35);
+  }
+}
+
+@keyframes auroraFloat {
+  from {
+    transform: translateY(0) scale(1);
+  }
+  to {
+    transform: translateY(-9px) scale(1.04);
+  }
+}
+
+@media (max-width: 920px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .footer-left,
+  .footer-right {
+    justify-self: center;
+    width: min(90vw, 500px);
+  }
+}
