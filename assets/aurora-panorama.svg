@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 350" role="img" aria-labelledby="title desc">
+  <title id="title">Aurora mountain panorama</title>
+  <desc id="desc">Stylized mountain panorama with dark clouds and cold tones.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#626978"/>
+      <stop offset="55%" stop-color="#2d3643"/>
+      <stop offset="100%" stop-color="#12151c"/>
+    </linearGradient>
+    <linearGradient id="aurora" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#88d3ce" stop-opacity="0.45"/>
+      <stop offset="45%" stop-color="#6e45e2" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#f5af19" stop-opacity="0.25"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="350" fill="url(#sky)"/>
+  <path d="M0 94c177 29 355-20 533-4s355 58 533 33 355-54 534-20v102H0z" fill="#b8c5d6" opacity="0.2"/>
+  <path d="M0 284l174-106 138 66 123-117 170 157 120-77 139 100 155-161 166 98 127-82 288 122H0z" fill="#1d2430"/>
+  <path d="M0 318l174-60 138 43 123-70 170 87 120-42 139 58 155-96 166 50 127-39 288 69H0z" fill="#0e131c"/>
+  <ellipse cx="780" cy="95" rx="540" ry="85" fill="url(#aurora)"/>
+</svg>
