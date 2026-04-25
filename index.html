@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Wild Hermes – Tunturilta toiselle</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      background: #000;
+      color: #fff;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      overflow-x: hidden;
+    }
+
+    .scroll-wrapper {
+      height: 800vh;
+      position: relative;
+    }
+
+    .scene {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .mountain-frame {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transform: scale(1.1) translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .overlay-text {
+      position: absolute;
+      left: 50%;
+      bottom: 5%;
+      transform: translateX(-50%);
+      text-align: center;
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.8);
+      text-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="scroll-wrapper"></div>
+
+  <div class="scene">
+    <div class="mountain-frame" style="background-image: url('tunturi1.jpg');"></div>
+    <div class="mountain-frame" style="background-image: url('tunturi2.jpg');"></div>
+    <div class="mountain-frame" style="background-image: url('tunturi3.jpg');"></div>
+    <div class="mountain-frame" style="background-image: url('tunturi4.jpg');"></div>
+    <div class="mountain-frame" style="background-image: url('tunturi5.jpg');"></div>
+
+    <div class="overlay-text">
+      Wild Hermes · Lentoa tunturilta toiselle
+    </div>
+  </div>
+
+  <script>
+    const frames = document.querySelectorAll('.mountain-frame');
+    const totalFrames = frames.length;
+    const scrollWrapper = document.querySelector('.scroll-wrapper');
+
+    function updateScene() {
+      const scrollTop = window.scrollY;
+      const maxScroll = scrollWrapper.offsetHeight - window.innerHeight;
+      const progress = Math.min(Math.max(scrollTop / maxScroll, 0), 1);
+
+      const position = progress * (totalFrames - 1);
+      const currentIndex = Math.floor(position);
+      const nextIndex = Math.min(currentIndex + 1, totalFrames - 1);
+      const blend = position - currentIndex;
+
+      frames.forEach(frame => {
+        frame.style.opacity = 0;
+        frame.style.transform = 'scale(1.1) translateY(20px)';
+      });
+
+      const currentFrame = frames[currentIndex];
+      currentFrame.style.opacity = 1 - blend;
+      currentFrame.style.transform = `scale(${1.05 - blend * 0.05}) translateY(${10 * blend}px)`;
+
+      const nextFrame = frames[nextIndex];
+      nextFrame.style.opacity = blend;
+      nextFrame.style.transform = `scale(${1.1 - blend * 0.1}) translateY(${20 - 20 * blend}px)`;
+    }
+
+    window.addEventListener('scroll', updateScene);
+    window.addEventListener('load', updateScene);
+    window.addEventListener('resize', updateScene);
+  </script>
+
+</body>
+</html>
